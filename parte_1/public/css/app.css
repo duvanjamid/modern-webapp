@@ -1,0 +1,40 @@
+@font-face {
+    font-family: RobotoDraft;
+    src: url('./../fonts/Roboto-Regular.ttf');
+}
+
+body {
+    background-color: #e9e9e9;
+    font-family: "RobotoDraft", "Roboto", sans-serif;
+}
+
+.main {
+    position: fixed;
+    top: 50px;
+    min-width: 900px;
+    left: 50%;
+    background-color: #f6f6f6;
+    bottom: 50px;
+    margin-left: -450px;
+    box-shadow: 0 0px 10px #bbb;
+    border-radius: 2px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.navbar-default {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+.main-body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top: 106px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
