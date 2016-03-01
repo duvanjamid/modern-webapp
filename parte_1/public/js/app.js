@@ -48,17 +48,77 @@
 
     var contactCollection = Backbone.Collection.extend({
         model: contactModel,
-        url: '/contacts',
+        urlRoot: '/contacts',
         initialize: function () {
-            this.fetch();
+            this.fetch({
+                success: function (a,b) {
+                    console.log(a); // => 2 (collection have been populated)
+                }
+            });
         }
     });
 
     $(document).ready(function () {
-        var juan = new contactModel();
+        var juan = new contactModel({
+            id: 1,
+            name: 'NN',
+            age: 22,
+            address: 'Cra 27 calle 9 - ciudad universitaria ',
+            phone: '6344000',
+            email: "email@uis.edu.co",
+            photo: '/images/avatar.png'
+        });
+        console.log(juan.url());
         juan.save();
         var contactos = new contactCollection();
-        console.log(contactos.toJSON());
+        // console.log(contactos.models);
+        // console.log(contactos.toJSON());
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 })();
