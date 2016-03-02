@@ -33,8 +33,60 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     position: absolute;
-    top: 106px;
+    top: 60px;
     bottom: 0;
     left: 0;
     right: 0;
+    padding: 20px;
+    margin: 0;
+}
+
+.contacto {
+    position: relative;
+    margin: 1px 0 0 0;
+}
+
+.contact-picture {
+    width: 56px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.contact-picture img {
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+}
+
+.contact-content {
+    display: inline-block;
+    width: -webkit-calc(100% - 76px);
+    width: calc(100% - 76px);
+}
+
+.contact-content h3 {
+    margin: 0;
+}
+
+.opciones {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.opciones .pager {
+    margin: 0;
+}
+
+.opciones .pager a:hover {
+    cursor: pointer;
+}
+
+.opciones .pager a .material-icons {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.panel.panel-deleted .panel-body{
+    background: #C0392B;
+    color: #fff;
 }

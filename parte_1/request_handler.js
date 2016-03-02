@@ -13,10 +13,7 @@ module.exports = {
         database
             .getAll()
             .then(function (results) {
-                    res.json({
-                        success: true,
-                        data: results
-                    });
+                    res.status(200).jsonp(results);
                 },
                 function (err) {
                     res.json({
@@ -62,14 +59,16 @@ module.exports = {
         var phone = req.body.phone;
         var email = req.body.email;
         var photo = req.body.photo;
-        
+        var favorite = req.body.favorite;
+
         var newContact = {
             name: name,
             age: age,
             address: address,
             phone: phone,
             email: email,
-            photo: photo
+            photo: photo,
+            favorite: favorite
         };
 
         database
@@ -91,14 +90,26 @@ module.exports = {
      */
     updateContact: function (req, res) {
 
+
         var id = Number(req.params.id);
         var name = req.body.name;
         var age = Number(req.body.age);
+        var address = req.body.address;
+        var phone = req.body.phone;
+        var email = req.body.email;
+        var photo = req.body.photo;
+        var favorite = req.body.favorite;
 
         var updateData = {
             name: name,
-            age: age
+            age: age,
+            address: address,
+            phone: phone,
+            email: email,
+            photo: photo,
+            favorite: favorite
         };
+
 
         database
             .updateById(id, updateData)

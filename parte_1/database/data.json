@@ -1,5 +1,19 @@
 [{
-    "name": "Maria",
-    "age": 25,
-    "id": 1
+    "id": 1,
+    "name": "Duvan Jamid Vargas",
+    "age": 27,
+    "address": "Cra 27 calle 9 - ciudad universitaria ",
+    "phone": "6344000",
+    "email": "duvanjamidvc@gmail.com",
+    "photo": "/images/avatar.png",
+    "favorite": true
+}, {
+    "name": "Lizeth Rodriguez",
+    "age": 22,
+    "address": "Cra 27 calle 9 - ciudad universitaria ",
+    "phone": "6344000",
+    "email": "email@uis.edu.co",
+    "photo": "/images/avatar.png",
+    "id": 2,
+    "favorite": true
 }]

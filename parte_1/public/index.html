@@ -1,195 +1,163 @@
 <!DOCTYPE HTML>
 <html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Contact manager</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/bootstrap-material-design.min.css">
-    <link rel="stylesheet" href="./css/ripples.min.css">
-    <link rel="stylesheet" href="./css/app.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Contact manager</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/bootstrap-material-design.min.css">
+        <link rel="stylesheet" href="./css/ripples.min.css">
+        <link rel="stylesheet" href="./css/app.css">
+    </head>
 
-<body>
-    <!--  srtart main contet -->
-    <div class="main">
-        <nav class="navbar navbar-default ">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#home">CM</a>
+    <body>
+        <!--  srtart main contet -->
+        <div class="main">
+            <nav class="navbar navbar-default ">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#home">CM</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="#show-contacts">All contacts</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#new-contact">New contact</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#show-contacts">All contacts</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#new-contact">New contact</a></li>
-                    </ul>
+            </nav>
+            <div class="main-body">
+                <!-- main-body -->
+
+                <!-- main-body -->
+            </div>
+
+        </div>
+        <!--  end main contet -->
+
+        <!-- underscore template -->
+
+        <script id="template-contacto" type="text/template">
+            <div class="panel panel-default contacto">
+                <div class="panel-body">
+                    <div class="contact-picture">
+                        <img class="circle" src="<%=photo%>" alt="icon"/>
+                    </div>
+                    <div class="contact-content">
+                        <h3><%=name%></h3>
+                    </div>
+                    <div class="opciones">
+                        <ul class="pager">
+                            <li class="">
+                                <a class="favorite">
+                                    <i class="material-icons "><%=favorite?'favorite':'favorite_border'%></i>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="edit" href="#edit-contact/<%=id%>">
+                                    <i class="material-icons">mode_edit</i>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="remove">
+                                    <i class="material-icons ">clear</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </nav>
-        <div class="main-body">
-            <!-- main-body -->
 
-            <form class="form-horizontal">
-                <div class="form-group is-empty">
-                    <label for="inputEmail" class="col-md-2 control-label">Email</label>
-
-                    <div class="col-md-10">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                    </div>
-                    <span class="material-input"></span></div>
-                <div class="form-group is-empty">
-                    <label for="inputPassword" class="col-md-2 control-label">Password</label>
-                    <div class="col-md-10">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                    </div>
-                    <span class="material-input"></span>
+        </script>
+        <script id="template-contacto-nuevo" type="text/template">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h3 class="panel-title">New contact</h3>
                 </div>
-                <div class="form-group" style="margin-top: 0;">
-                    <!-- inline style is just to demo custom css to put checkbox below input above -->
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"><span class="checkbox-material"><span class="check"></span></span> Checkbox
-                            </label>
-                            <label>
-                                <input type="checkbox" disabled=""><span class="checkbox-material"><span class="check"></span></span> Disabled Checkbox
-                            </label>
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <div class="form-group is-empty">
+                            <label for="name" class="col-md-2 control-label">Nombre</label>
+                            <div class="col-md-10">
+                                <input type="email" class="form-control" id="name" placeholder="Nombre">
+                            </div>
+                            <span class="material-input"></span>
                         </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="togglebutton">
-                            <label>
-                                <input type="checkbox" checked=""><span class="toggle"></span> Toggle button
-                            </label>
+                        <div class="form-group is-empty">
+                            <label for="inputEmail" class="col-md-2 control-label">Email</label>
+                            <div class="col-md-10">
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                            </div>
+                            <span class="material-input"></span>
                         </div>
-                    </div>
-                </div>
-                <div class="form-group is-empty is-fileinput">
-                    <label for="inputFile" class="col-md-2 control-label">File</label>
-
-                    <div class="col-md-10">
-                        <input type="text" readonly="" class="form-control" placeholder="Browse...">
-                        <input type="file" id="inputFile" multiple="">
-                    </div>
-                    <span class="material-input"></span></div>
-                <div class="form-group is-empty">
-                    <label for="textArea" class="col-md-2 control-label">Textarea</label>
-
-                    <div class="col-md-10">
-                        <textarea class="form-control" rows="3" id="textArea"></textarea>
-                        <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
-                    </div>
-                    <span class="material-input"></span></div>
-                <div class="form-group">
-                    <label class="col-md-2 control-label">Radios</label>
-
-                    <div class="col-md-10">
-                        <div class="radio radio-primary">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked=""><span class="circle"></span><span class="check"></span> Option one is this
-                            </label>
+                        <div class="form-group is-empty">
+                            <label for="address" class="col-md-2 control-label">Dirección</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="address" placeholder="Dirección">
+                            </div>
+                            <span class="material-input"></span>
                         </div>
-                        <div class="radio radio-primary">
-                            <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"><span class="circle"></span><span class="check"></span> Option two can be something else
-                            </label>
+                        <div class="form-group is-empty">
+                            <label for="phone" class="col-md-2 control-label">Telefono</label>
+                            <div class="col-md-10">
+                                <input type="tel" class="form-control" id="phone" placeholder="Telefono">
+                            </div>
+                            <span class="material-input"></span>
                         </div>
-                    </div>
+                        <div class="form-group is-empty">
+                            <label for="photo" class="col-md-2 control-label">Foto</label>
+                            <div class="col-md-10">
+                                <input type="url" class="form-control" id="photo" placeholder="Foto">
+                            </div>
+                            <span class="material-input"></span>
+                        </div>
+                        <div class="form-group is-empty">
+                            <label for="edad" class="col-md-2 control-label">Edad</label>
+                            <div class="col-md-10">
+                                <input type="number" class="form-control" id="edad" placeholder="Edad">
+                            </div>
+                            <span class="material-input"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="togglebutton">
+                                    <label>
+                                        <input type="checkbox" checked="" id="favorito">
+                                        <span class="toggle"></span>
+                                        Favorito
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
+                                <button type="button" class="btn btn-primary btn-raised pull-right enviar">Submit</button>
+                                <button type="button" class="btn btn-default btn-raised pull-right cancelar">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+
                 </div>
-                <div class="form-group">
-                    <label for="select111" class="col-md-2 control-label">Select</label>
+            </div>
 
-                    <div class="col-md-10">
-                        <select id="select111" class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <span class="material-input"></span></div>
-                <div class="form-group is-empty">
-                    <label for="select222" class="col-md-2 control-label">Select Multiple</label>
+        </script>
 
-                    <div class="col-md-10">
-                        <select id="select222" multiple="" class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
-                    </div>
-                    <span class="material-input"></span></div>
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <button type="button" class="btn btn-default btn-raised">Cancel</button>
-                        <button type="submit" class="btn btn-primary btn-raised">Submit</button>
-                    </div>
-                </div>
-            </form>
-
-            <!-- main-body -->
-        </div>
-
-    </div>
-    <!--  end main contet -->
-
-
-
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/ripples.min.js"></script>
-    <script src="./js/material.min.js"></script>
-    <script src="./js/underscore.min.js"></script>
-    <script src="./js/backbone.min.js"></script>
-    <script src="./js/app.js"></script>
-    <script>
-    // Crear un nuevo contacto con los datos especificados y mostrar el resultado
-    // en la consola.
-    // $.ajax({
-    //         url: '/contact/',
-    //         type: 'post',
-    //         data: {
-    //             name: 'Juan ',
-    //             age: 25
-    //         }
-    //     })
-    //     .then(function(result) {
-    //
-    //         if (result.success) {
-    //             console.log('Éxito:', result.data);
-    //         } else {
-    //             console.error('Ha ocurrido un error:', result.error);
-    //         }
-    //
-    //         // Conseguir todos los usuarios actualmente encontrados en el servidor.
-    //         $.ajax({
-    //                 url: '/contacts/',
-    //                 type: 'get'
-    //             })
-    //             .then(function(result) {
-    //                 if (result.success) {
-    //                     console.log('Éxito:', result.data);
-    //                 } else {
-    //                     console.error('Ha ocurrido un error:', result.error);
-    //                 }
-    //             }, function() {
-    //                 console.error('Ha ocurrido un error.');
-    //             });
-    //
-    //     }, function() {
-    //         console.error('Ha ocurrido un error.');
-    //     });
-    </script>
-</body>
+        <script src="./js/jquery.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/ripples.min.js"></script>
+        <script src="./js/material.min.js"></script>
+        <script src="./js/underscore.min.js"></script>
+        <script src="./js/backbone.min.js"></script>
+        <script src="./js/app.js"></script>
+    </body>
 
 </html>
