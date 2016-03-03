@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Contact manager</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/bootstrap-material-design.min.css">
+        <link rel="stylesheet" href="./css/ripples.min.css">
+        <link rel="stylesheet" href="./css/snackbar.min.css">
+        <link rel="stylesheet" href="./css/app.css">
+    </head>
+
+    <body>
+        <!--  srtart main contet -->
+        <div class="main">
+            <nav class="navbar navbar-default ">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#home">CM</a>
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="#show-contacts">All contacts</a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="#new-contact">New contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="main-body">
+                <!-- main-body -->
+
+                <!-- main-body -->
+            </div>
+
+        </div>
+        <!--  end main contet -->
+
+        <!-- underscore template -->
+
+        <script id="template-contacto" type="text/template">
+            <div class="panel panel-default contacto">
+                <div class="panel-body">
+                    <div class="contact-picture">
+                        <img class="circle" src="<%=photo%>" alt="icon"/>
+                    </div>
+                    <div class="contact-content">
+                        <a href="#view-contact/<%=id%>">
+                            <h3><%=name%></h3>
+                        </a>
+                    </div>
+                    <div class="opciones">
+                        <ul class="pager">
+                            <li class="">
+                                <a class="favorite">
+                                    <i class="material-icons "><%=favorite?'favorite':'favorite_border'%></i>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="edit" href="#edit-contact/<%=id%>">
+                                    <i class="material-icons">mode_edit</i>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a class="remove">
+                                    <i class="material-icons ">clear</i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </script>
+        <script id="template-contacto-full" type="text/template">
+            <div class="panel panel-default contacto-full">
+                <div class="panel-body">
+                    <div style="text-align:center">
+                        <img class="circle avatar" src="<%=photo%>" alt="icon"/>
+                    </div>
+                    <div >
+                        <div class="breadcrumb">
+                            <h3><%=name%></h3>
+                        </div>
+                        <div class="breadcrumb">
+                            <p><%=email%></p>
+                            <p><%=address%></p>
+                            <p><%=phone%></p>
+                            <p><%=age%></p>
+                        </div>
+
+                    </div>
+                    <a class="volver">
+                        <i class="material-icons ">arrow_back</i>
+                    </a>
+                    <a class="favorite">
+                        <i class="material-icons "><%=favorite?'favorite':'favorite_border'%></i>
+                    </a>
+                </div>
+            </div>
+
+        </script>
+        <script id="template-contacto-nuevo" type="text/template">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <% var id =id||null; var name=name||""; var email=email || ""; var address =address || ""; var phone=phone||""; var photo=photo||"/images/avatar.png"; var age=age||""; var favorite = favorite ||false; %>
+                    <h3 class="panel-title"><%=id?"Edit":"New"%>
+                        contact</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <div class="form-group is-empty">
+                            <label for="name" class="col-md-2 control-label">Nombre</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="name" placeholder="Nombre" value="<%=name%>">
+                            </div>
+                            <span class="material-input"></span>
+                        </div>
+                        <div class="form-group is-empty">
+                            <label for="email" class="col-md-2 control-label">Email</label>
+                            <div class="col-md-10">
+                                <input type="email" class="form-control" id="email" placeholder="Email" value="<%=email %>">
+                            </div>
+                            <span class="material-input"></span>
+                        </div>
+                        <div class="form-group is-empty">
+                            <label for="address" class="col-md-2 control-label">Dirección</label>
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="address" placeholder="Dirección" value="<%=address%>">
+                            </div>
+                            <span class="material-input"></span>
+                        </div>
+                        <div class="form-group is-empty">
+                            <label for="phone" class="col-md-2 control-label">Telefono</label>
+                            <div class="col-md-10">
+                                <input type="tel" class="form-control" id="phone" placeholder="Telefono" value="<%=phone%>">
+                            </div>
+                            <span class="material-input"></span>
+                        </div>
+                        <div class="form-group is-empty">
+                            <label for="photo" class="col-md-2 control-label">Foto</label>
+                            <div class="col-md-10">
+                                <input type="url" class="form-control" id="photo" placeholder="Foto" value="<%=photo%>">
+                            </div>
+                            <span class="material-input"></span>
+                        </div>
+                        <div class="form-group is-empty">
+                            <label for="age" class="col-md-2 control-label">Edad</label>
+                            <div class="col-md-10">
+                                <input type="number" class="form-control" id="age" placeholder="Edad" value="<%=age%>">
+                            </div>
+                            <span class="material-input"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="togglebutton">
+                                    <label>
+                                        <input type="checkbox" id="favorite" <%=favorite?"checked":""%>>
+                                        <span class="toggle"></span>
+                                        Favorito
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
+                                <button type="button" class="btn btn-primary btn-raised pull-right enviar">Save</button>
+                                <button type="button" class="btn btn-default btn-raised pull-right cancelar"><%=id?"Back":"Cancel"%></button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </script>
+
+        <script src="./js/jquery.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/ripples.min.js"></script>
+        <script src="./js/material.min.js"></script>
+        <script src="./js/underscore.min.js"></script>
+        <script src="./js/backbone.min.js"></script>
+        <script src="./js/snackbar.min.js"></script>
+        <script src="./js/app.js"></script>
+    </body>
+
+</html>
