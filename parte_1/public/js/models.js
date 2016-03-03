@@ -20,7 +20,7 @@ var contactModel = Backbone.Model.extend({
 
 
 /**
- * Colección en backbone
+ * ColecciÃ³n en backbone
  */
 var contactCollection = Backbone.Collection.extend({
     model: contactModel,
