@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({
 // Conseguir la lista de todos los contactos.
 app.get('/contacts', reqHandler.getContacts );
 
+app.get('/favorites', reqHandler.getFavorites );
 
 // Conseguir un solo contacto por identificador.
 app.get('/contact/:id', reqHandler.getContact );

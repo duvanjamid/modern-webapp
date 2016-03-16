@@ -14,7 +14,22 @@ var Rutas = Backbone.Router.extend({
         "show-contacts": "showAllContacts",
         "new-contact": "newContact",
         "view-contact/:id": "viewContact",
-        "edit-contact/:id": "editContact"
+        "edit-contact/:id": "editContact",
+        "show-favorites": "showFavorites"
+    },
+    showFavorites: function () {
+        // alert("Vamos a ver los favoritos");
+        var favoritos = new favoritesCollection();
+        favoritos.fetch({
+            success: function () {
+                $('.main-body').html("");
+                favoritos.each(function (contacto, index) {
+                    new contactView({
+                        model: contacto
+                    });
+                });
+            }
+        });
     },
     showAllContacts: function () {
         this._contactos = new contactCollection();
@@ -86,6 +101,13 @@ var contactModel = Backbone.Model.extend({
 var contactCollection = Backbone.Collection.extend({
     model: contactModel,
     url: '/contacts',
+    initialize: function () {
+        // this.fetch();
+    }
+});
+var favoritesCollection = Backbone.Collection.extend({
+    model: contactModel,
+    url: '/favorites',
     initialize: function () {
         // this.fetch();
     }

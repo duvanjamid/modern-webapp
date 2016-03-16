@@ -3,6 +3,7 @@
  */
 
 var database = require('./database');
+var _ = require('underscore');
 
 
 module.exports = {
@@ -14,6 +15,21 @@ module.exports = {
             .getAll()
             .then(function (results) {
                     res.status(200).jsonp(results);
+                },
+                function (err) {
+                    res.json({
+                        error: err
+                    });
+                });
+    },
+    getFavorites: function (req, res) {
+        database
+            .getAll()
+            .then(function (results) {
+                    var favoritos = _.where(results, {
+                        favorite: true
+                    });
+                    res.status(200).jsonp(favoritos);
                 },
                 function (err) {
                     res.json({
